@@ -534,6 +534,21 @@ With the above stub defined, any query for "New York, NY" will return the result
       ]
     )
 
+If you would like to stub IP lookups, create an IP address to wrap the lookup:
+
+    Geocoder::Lookup::Test.add_stub(
+      IPAddr.new("10.0.0.1"), [
+        {
+          'coordinates'  => [39.9526, -75.1652],
+          'address'      => 'Philadelphia, PA, USA',
+          'state'        => 'Pennsylvania',
+          'state_code'   => 'PA',
+          'country'      => 'United States',
+          'country_code' => 'US'
+        }
+      ]
+    )
+
 Notes:
 
 - Keys must be strings (not symbols) when calling `add_stub` or `set_default_stub`. For example `'country' =>` not `:country =>`.
